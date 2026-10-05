@@ -1,0 +1,6 @@
+{
+  "name": "Chiquexodó - Bio Site Oficial",
+  "description": "Bio Site oficial da loja infantil Chiquexodó. Links para WhatsApp e Instagram com atendimento exclusivo e entregas para todo o Brasil.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
