@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Share2, QrCode, Sparkles, CheckCircle2 } from 'lucide-react';
+import { Share2, QrCode, CheckCircle2 } from 'lucide-react';
 
 interface ProfileHeaderProps {
   onOpenQR: () => void;
@@ -17,10 +17,8 @@ export const ProfileHeader: React.FC<ProfileHeaderProps> = ({
 
   const handleImageError = () => {
     if (logoSrc !== '/logo.png') {
-      // Try local fallback
       setLogoSrc('/logo.png');
     } else {
-      // Both failed, render SVG emblem fallback
       setImgFailed(true);
     }
   };
@@ -28,31 +26,33 @@ export const ProfileHeader: React.FC<ProfileHeaderProps> = ({
   return (
     <header className="w-full flex flex-col items-center text-center">
       {/* Top action row */}
-      <div className="w-full flex items-center justify-between pb-5 border-b border-white/5 mb-6 text-xs text-gray-400">
+      <div className="w-full flex items-center justify-between pb-4 border-b border-[#E8D6E0] mb-6 text-xs text-gray-600">
         <a
           href="https://www.instagram.com/chiquexodo_/"
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center gap-1.5 font-semibold text-gray-300 hover:text-white transition-colors"
+          className="flex items-center gap-1.5 font-semibold text-gray-800 hover:text-[#E21885] transition-colors"
         >
           <span className="text-[#E21885] font-bold">@</span>
           <span>chiquexodo_</span>
         </a>
 
+        {/* Action icons: QR Code & Share */}
         <div className="flex items-center gap-2">
           <button
             onClick={onOpenQR}
             aria-label="Abrir QR Code"
             title="Ver QR Code"
-            className="p-2 rounded-xl bg-white/5 hover:bg-white/10 text-gray-300 hover:text-white border border-white/5 transition-all active:scale-95 cursor-pointer"
+            className="p-2.5 rounded-xl border border-pink-200/80 bg-white/80 hover:bg-white text-gray-700 hover:text-[#E21885] shadow-sm transition-all active:scale-95 cursor-pointer"
           >
             <QrCode className="w-4 h-4" />
           </button>
+
           <button
             onClick={onOpenShare}
             aria-label="Compartilhar"
             title="Compartilhar Bio Site"
-            className="p-2 rounded-xl bg-white/5 hover:bg-white/10 text-gray-300 hover:text-white border border-white/5 transition-all active:scale-95 cursor-pointer"
+            className="p-2.5 rounded-xl border border-pink-200/80 bg-white/80 hover:bg-white text-gray-700 hover:text-[#E21885] shadow-sm transition-all active:scale-95 cursor-pointer"
           >
             <Share2 className="w-4 h-4" />
           </button>
@@ -62,18 +62,22 @@ export const ProfileHeader: React.FC<ProfileHeaderProps> = ({
       {/* Avatar Container with Instagram story-ring aesthetic */}
       <div className="relative group cursor-pointer mb-4">
         {/* Animated aura ring */}
-        <div className="absolute -inset-1 rounded-full bg-gradient-to-tr from-[#E21885] via-[#ff4d91] to-[#ffa07a] opacity-80 blur-[6px] group-hover:opacity-100 transition duration-500" />
-        
+        <div className="absolute -inset-1.5 rounded-full blur-[8px] bg-gradient-to-tr from-[#E21885]/35 via-[#ff4d91]/25 to-[#fb923c]/20 opacity-90 group-hover:opacity-100 transition duration-500" />
+
         {/* Story Ring Border */}
-        <div className="relative p-1 rounded-full bg-gradient-to-tr from-[#E21885] via-[#f43f5e] to-[#fb923c]">
-          <div className="p-0.5 rounded-full bg-[#0C1014]">
-            <div className="w-28 h-28 sm:w-32 sm:h-32 rounded-full overflow-hidden bg-[#161B22] flex items-center justify-center">
+        <div className="relative p-1 rounded-full bg-gradient-to-tr from-[#E21885] via-[#f43f5e] to-[#fb923c] shadow-lg shadow-[#E21885]/20">
+          <div className="p-0.5 rounded-full bg-white">
+            <div
+              className="w-28 h-28 sm:w-32 sm:h-32 rounded-full overflow-hidden bg-[#E21885] flex items-center justify-center shadow-inner"
+              style={{ borderRadius: '9999px' }}
+            >
               {!imgFailed ? (
                 <img
                   src={logoSrc}
                   alt="Logo Chiquexodó"
                   onError={handleImageError}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  className="w-full h-full object-cover rounded-full block select-none pointer-events-none transition-transform duration-500 group-hover:scale-105"
+                  style={{ borderRadius: '9999px', objectFit: 'cover' }}
                   referrerPolicy="no-referrer"
                 />
               ) : (
@@ -91,38 +95,36 @@ export const ProfileHeader: React.FC<ProfileHeaderProps> = ({
         </div>
 
         {/* Online Status Pill Badge */}
-        <div className="absolute bottom-1 right-2 flex items-center gap-1 bg-[#0C1014] border border-white/10 rounded-full py-0.5 px-2 shadow-lg">
+        <div className="absolute bottom-1 right-2 flex items-center gap-1 rounded-full py-0.5 px-2.5 shadow-md border border-pink-200 bg-white text-gray-800">
           <span className="w-2 h-2 rounded-full bg-[#25D366] animate-pulse" />
-          <span className="text-[10px] font-semibold text-gray-300 tracking-tight">
-            Online
-          </span>
+          <span className="text-[10px] font-bold tracking-tight">Online</span>
         </div>
       </div>
 
       {/* Store Name & Verification */}
       <div className="flex items-center justify-center gap-1.5 mt-1">
-        <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-white">
+        <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-[#1F141E]">
           Chiquexodó
         </h1>
         <div title="Loja Oficial Verificada" className="text-[#E21885] flex items-center">
-          <CheckCircle2 className="w-5 h-5 fill-[#E21885] text-[#0C1014]" />
+          <CheckCircle2 className="w-5 h-5 fill-[#E21885] text-white" />
         </div>
       </div>
 
       {/* Category */}
-      <span className="text-xs sm:text-sm font-medium text-gray-400 mt-1 mb-3">
+      <span className="text-xs sm:text-sm font-semibold tracking-wide mt-1 mb-3 text-[#E21885]">
         Loja de roupas infantis
       </span>
 
       {/* Official Bio Box */}
-      <div className="w-full max-w-sm bg-[#12161D]/80 border border-white/5 rounded-2xl p-4 text-center backdrop-blur-sm shadow-sm mb-2">
-        <p className="text-sm font-semibold text-[#fce7f3] mb-1">
+      <div className="w-full max-w-sm rounded-2xl p-4 text-center backdrop-blur-sm bg-white/90 border border-[#EAD5E1] shadow-md shadow-[#964B74]/5">
+        <p className="text-sm font-bold mb-1 text-[#C71273]">
           Onde o estilo encontra a fofura!
         </p>
-        <p className="text-xs text-gray-300 leading-relaxed flex items-center justify-center gap-1">
-          <span>Looks que encantam, conforto que abraça.</span>
+        <p className="text-xs leading-relaxed text-gray-600">
+          <span>✨ Looks que encantam, conforto que abraça.</span>
         </p>
-        <div className="mt-2 pt-2 border-t border-white/5 flex items-center justify-center gap-1.5 text-xs text-emerald-400 font-medium">
+        <div className="mt-2.5 pt-2.5 border-t border-[#F0DFE8] flex items-center justify-center gap-1.5 text-xs font-semibold text-emerald-700">
           <span>🚚</span>
           <span>Entregamos para todo o Brasil</span>
         </div>

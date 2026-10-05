@@ -49,7 +49,8 @@ export const Highlights: React.FC<HighlightsProps> = ({
   onSelectHighlight,
 }) => {
   const renderIcon = (name: HighlightItem['iconName']) => {
-    const iconClass = 'w-6 h-6 text-gray-200 transition-colors group-hover:text-white';
+    const iconClass = 'w-6 h-6 text-[#E21885] transition-transform group-hover:scale-110';
+
     switch (name) {
       case 'sparkles':
         return <Sparkles className={iconClass} />;
@@ -63,12 +64,14 @@ export const Highlights: React.FC<HighlightsProps> = ({
   };
 
   return (
-    <div className="w-full my-6">
+    <div className="w-full my-5">
       <div className="flex items-center justify-between px-2 mb-3">
-        <span className="text-[11px] font-semibold uppercase tracking-wider text-gray-400">
+        <span className="text-[11px] font-bold uppercase tracking-wider text-gray-600">
           Destaques do Instagram
         </span>
-        <span className="text-[11px] text-gray-500">Toque para ver</span>
+        <span className="text-[11px] text-[#E21885] font-semibold">
+          Toque para ver
+        </span>
       </div>
 
       <div className="grid grid-cols-4 gap-2">
@@ -79,13 +82,13 @@ export const Highlights: React.FC<HighlightsProps> = ({
             className="group flex flex-col items-center focus:outline-none transition-transform active:scale-95 cursor-pointer"
           >
             {/* Instagram story style circular ring */}
-            <div className="relative w-16 h-16 sm:w-18 sm:h-18 rounded-full p-[2px] bg-gradient-to-tr from-[#E21885] via-[#ff4d91] to-[#3b82f6] group-hover:from-[#E21885] group-hover:to-[#ff90c2] transition-all shadow-md shadow-[#E21885]/15">
-              <div className="w-full h-full rounded-full bg-[#12161C] flex items-center justify-center border-2 border-[#0C1014] group-hover:bg-[#1a2029] transition-colors">
+            <div className="relative w-16 h-16 sm:w-18 sm:h-18 rounded-full p-[2px] bg-gradient-to-tr from-[#E21885] via-[#ff4d91] to-[#f97316] group-hover:from-[#E21885] group-hover:to-[#ff90c2] transition-all shadow-md shadow-[#964B74]/15">
+              <div className="w-full h-full rounded-full flex items-center justify-center border-2 border-white bg-white group-hover:bg-pink-50/70 transition-colors">
                 {renderIcon(item.iconName)}
               </div>
             </div>
             {/* Label */}
-            <span className="mt-2 text-[11px] font-medium text-gray-300 group-hover:text-white truncate max-w-[70px]">
+            <span className="mt-2 text-[11px] font-bold text-gray-700 group-hover:text-[#E21885] truncate max-w-[70px] transition-colors">
               {item.name}
             </span>
           </button>

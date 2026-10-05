@@ -15,7 +15,10 @@ export default function App() {
   const [selectedHighlight, setSelectedHighlight] = useState<HighlightItem | null>(null);
   const [toastMessage, setToastMessage] = useState<string | null>(null);
 
-  const bioSiteUrl = typeof window !== 'undefined' ? window.location.href : 'https://w.app/chiquexodo';
+  const bioSiteUrl =
+    typeof window !== 'undefined'
+      ? window.location.href
+      : 'https://w.app/chiquexodo';
 
   const showToast = (msg: string) => {
     setToastMessage(msg);
@@ -47,14 +50,14 @@ END:VCARD`;
   };
 
   return (
-    <div className="min-h-screen bg-[#0C1014] text-gray-100 flex flex-col items-center justify-start relative px-4 py-6 sm:py-10 selection:bg-[#E21885] selection:text-white">
-      {/* Background radial ambient lights for authentic luxury dark aesthetic */}
+    <div className="min-h-screen bg-gradient-to-b from-[#F2E5EC] via-[#F8EEF4] to-[#EFE1EA] text-gray-900 flex flex-col items-center justify-start relative px-4 py-6 sm:py-10 selection:bg-[#E21885] selection:text-white">
+      {/* Background ambient radial gradients for warm boutique depth and contrast */}
       <div
-        className="fixed top-0 left-1/2 -translate-x-1/2 w-[600px] h-[350px] bg-gradient-to-b from-[#E21885]/12 via-[#E21885]/5 to-transparent blur-[90px] pointer-events-none -z-10"
+        className="fixed top-0 left-1/2 -translate-x-1/2 w-[720px] h-[420px] bg-gradient-to-b from-[#E21885]/15 via-[#ff8ebc]/8 to-transparent blur-[110px] pointer-events-none -z-10"
         aria-hidden="true"
       />
       <div
-        className="fixed bottom-0 right-0 w-[400px] h-[300px] bg-gradient-to-t from-[#25D366]/5 to-transparent blur-[100px] pointer-events-none -z-10"
+        className="fixed bottom-0 right-0 w-[450px] h-[380px] bg-gradient-to-t from-[#25D366]/10 via-[#E21885]/8 to-transparent blur-[120px] pointer-events-none -z-10"
         aria-hidden="true"
       />
 
@@ -78,7 +81,7 @@ END:VCARD`;
         <div className="w-full mt-3">
           <button
             onClick={handleSaveContact}
-            className="w-full py-3 px-4 rounded-2xl bg-white/5 hover:bg-white/10 border border-white/5 hover:border-white/10 text-xs font-semibold text-gray-300 hover:text-white flex items-center justify-center gap-2 transition-all active:scale-[0.98] cursor-pointer"
+            className="w-full py-3.5 px-4 rounded-2xl border border-[#EAD5E1] bg-white/95 hover:bg-white text-xs font-bold text-gray-700 hover:text-[#E21885] shadow-sm shadow-[#964B74]/5 flex items-center justify-center gap-2 transition-all active:scale-[0.98] cursor-pointer"
           >
             <BookmarkPlus className="w-4 h-4 text-[#E21885]" />
             <span>Salvar contato da Chiquexodó no celular</span>
@@ -94,7 +97,7 @@ END:VCARD`;
 
       {/* Toast Notification */}
       {toastMessage && (
-        <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 py-2.5 px-4 rounded-full bg-[#1F242D] border border-white/10 shadow-2xl text-xs font-medium text-white flex items-center gap-2 animate-bounce">
+        <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 py-2.5 px-4 rounded-full border border-pink-200 bg-white text-gray-900 shadow-xl shadow-pink-900/15 text-xs font-semibold flex items-center gap-2 animate-bounce">
           <Check className="w-4 h-4 text-[#25D366]" />
           <span>{toastMessage}</span>
         </div>
