@@ -125,8 +125,8 @@ export const ProfileHeader: React.FC<ProfileHeaderProps> = ({
           <span>✨ Looks que encantam, conforto que abraça.</span>
         </p>
         <div className="mt-2.5 pt-2.5 border-t border-[#F0DFE8] flex items-center justify-center gap-1.5 text-xs font-semibold text-emerald-700">
-          <span>🚚</span>
-          <span>Entregamos para todo o Brasil</span>
+          <span>🛍️</span>
+          <span>Faça seu pedido</span>
         </div>
       </div>
     </header>
