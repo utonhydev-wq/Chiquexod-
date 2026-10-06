@@ -10,7 +10,7 @@ export const TrustBadges: React.FC = () => {
           <Truck className="w-4 h-4" />
         </div>
         <span className="text-[11px] font-bold text-gray-900">
-          Todo o Brasil
+          Faça seu pedido
         </span>
         <span className="text-[10px] mt-0.5 leading-tight text-gray-500">
           Envio seguro
