@@ -113,7 +113,7 @@ export const ProfileHeader: React.FC<ProfileHeaderProps> = ({
 
       {/* Category */}
       <span className="text-xs sm:text-sm font-semibold tracking-wide mt-1 mb-3 text-[#E21885]">
-        Loja de roupas infantis
+        Loja de roupas
       </span>
 
       {/* Official Bio Box */}
