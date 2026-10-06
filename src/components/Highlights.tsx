@@ -1,5 +1,5 @@
 import React from 'react';
-import { Sparkles, Shirt, Heart, Package } from 'lucide-react';
+import { Sparkles, Shirt, Heart, ShoppingBag } from 'lucide-react';
 import { HighlightItem } from './HighlightsModal.tsx';
 
 interface HighlightsProps {
@@ -35,13 +35,14 @@ export const highlightsData: HighlightItem[] = [
     color: '#ec4899',
   },
   {
-    id: 'envios',
-    name: 'Envios',
-    iconName: 'package',
-    subtitle: 'Para todo Brasil',
+    id: 'bolsas',
+    name: 'Bolsas',
+    iconName: 'shopping-bag',
+    subtitle: 'Acessórios',
     description:
-      'Registros dos nossos pacotes sendo preparados e despachados com todo zelo e segurança para qualquer cidade do Brasil.',
+      'Confira nossa linha exclusiva de bolsas e acessórios infantis diretamente no Instagram oficial.',
     color: '#d946ef',
+    url: 'https://www.instagram.com/chiquexodo_/',
   },
 ];
 
@@ -58,8 +59,8 @@ export const Highlights: React.FC<HighlightsProps> = ({
         return <Shirt className={iconClass} />;
       case 'heart':
         return <Heart className={iconClass} />;
-      case 'package':
-        return <Package className={iconClass} />;
+      case 'shopping-bag':
+        return <ShoppingBag className={iconClass} />;
     }
   };
 
@@ -75,24 +76,35 @@ export const Highlights: React.FC<HighlightsProps> = ({
       </div>
 
       <div className="grid grid-cols-4 gap-2">
-        {highlightsData.map((item) => (
-          <button
-            key={item.id}
-            onClick={() => onSelectHighlight(item)}
-            className="group flex flex-col items-center focus:outline-none transition-transform active:scale-95 cursor-pointer"
-          >
-            {/* Instagram story style circular ring */}
-            <div className="relative w-16 h-16 sm:w-18 sm:h-18 rounded-full p-[2px] bg-gradient-to-tr from-[#E21885] via-[#ff4d91] to-[#f97316] group-hover:from-[#E21885] group-hover:to-[#ff90c2] transition-all shadow-md shadow-[#964B74]/15">
-              <div className="w-full h-full rounded-full flex items-center justify-center border-2 border-white bg-white group-hover:bg-pink-50/70 transition-colors">
-                {renderIcon(item.iconName)}
+        {highlightsData.map((item) => {
+          const handleClick = () => {
+            if (item.url) {
+              window.open(item.url, '_blank', 'noopener,noreferrer');
+            } else {
+              onSelectHighlight(item);
+            }
+          };
+
+          return (
+            <button
+              key={item.id}
+              onClick={handleClick}
+              title={item.url ? 'Abrir no Instagram' : `Ver ${item.name}`}
+              className="group flex flex-col items-center focus:outline-none transition-transform active:scale-95 cursor-pointer"
+            >
+              {/* Instagram story style circular ring */}
+              <div className="relative w-16 h-16 sm:w-18 sm:h-18 rounded-full p-[2px] bg-gradient-to-tr from-[#E21885] via-[#ff4d91] to-[#f97316] group-hover:from-[#E21885] group-hover:to-[#ff90c2] transition-all shadow-md shadow-[#964B74]/15">
+                <div className="w-full h-full rounded-full flex items-center justify-center border-2 border-white bg-white group-hover:bg-pink-50/70 transition-colors">
+                  {renderIcon(item.iconName)}
+                </div>
               </div>
-            </div>
-            {/* Label */}
-            <span className="mt-2 text-[11px] font-bold text-gray-700 group-hover:text-[#E21885] truncate max-w-[70px] transition-colors">
-              {item.name}
-            </span>
-          </button>
-        ))}
+              {/* Label */}
+              <span className="mt-2 text-[11px] font-bold text-gray-700 group-hover:text-[#E21885] truncate max-w-[70px] transition-colors">
+                {item.name}
+              </span>
+            </button>
+          );
+        })}
       </div>
     </div>
   );

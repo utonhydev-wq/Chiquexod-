@@ -1,13 +1,14 @@
 import React from 'react';
-import { X, ExternalLink, Sparkles, Shirt, Heart, Package } from 'lucide-react';
+import { X, ExternalLink, Sparkles, Shirt, Heart, ShoppingBag } from 'lucide-react';
 
 export interface HighlightItem {
   id: string;
   name: string;
-  iconName: 'sparkles' | 'shirt' | 'heart' | 'package';
+  iconName: 'sparkles' | 'shirt' | 'heart' | 'shopping-bag';
   subtitle: string;
   description: string;
   color: string;
+  url?: string;
 }
 
 interface HighlightsModalProps {
@@ -29,13 +30,13 @@ export const HighlightsModal: React.FC<HighlightsModalProps> = ({
         return <Shirt className={className} />;
       case 'heart':
         return <Heart className={className} />;
-      case 'package':
-        return <Package className={className} />;
+      case 'shopping-bag':
+        return <ShoppingBag className={className} />;
     }
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-md">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
       <div className="absolute inset-0" onClick={onClose} />
 
       <div className="relative w-full max-w-sm rounded-3xl p-6 shadow-2xl z-10 text-center border bg-white border-[#EAD5E1] text-gray-900 shadow-[#964B74]/20">
@@ -48,7 +49,7 @@ export const HighlightsModal: React.FC<HighlightsModalProps> = ({
         </button>
 
         {/* Highlight Cover Icon */}
-        <div className="mx-auto w-20 h-20 rounded-full p-[2px] bg-gradient-to-tr from-[#E21885] via-[#ff5b94] to-[#f97316] mb-4 shadow-lg shadow-[#E21885]/20">
+        <div className="mx-auto w-20 h-20 rounded-full p-[2px] bg-gradient-to-tr from-[#E21885] via-[#ff4d91] to-[#f97316] mb-4 shadow-lg shadow-[#E21885]/20">
           <div className="w-full h-full rounded-full flex items-center justify-center bg-white">
             {renderIcon(highlight.iconName, 'w-8 h-8 text-[#E21885]')}
           </div>

@@ -7,7 +7,7 @@ import { QRCodeModal } from './components/QRCodeModal.tsx';
 import { ShareModal } from './components/ShareModal.tsx';
 import { HighlightsModal, HighlightItem } from './components/HighlightsModal.tsx';
 import { Footer } from './components/Footer.tsx';
-import { BookmarkPlus, Check } from 'lucide-react';
+import { Sparkles, ChevronRight, Check } from 'lucide-react';
 
 export default function App() {
   const [isQRModalOpen, setIsQRModalOpen] = useState(false);
@@ -25,28 +25,6 @@ export default function App() {
     setTimeout(() => {
       setToastMessage(null);
     }, 3000);
-  };
-
-  const handleSaveContact = () => {
-    const vcard = `BEGIN:VCARD
-VERSION:3.0
-FN:Chiquexodó - Moda Infantil
-ORG:Chiquexodó
-NOTE:Onde o estilo encontra a fofura! Entregamos para todo o Brasil.
-URL:https://w.app/chiquexodo
-URL;type=Instagram:https://www.instagram.com/chiquexodo_/
-END:VCARD`;
-
-    const blob = new Blob([vcard], { type: 'text/vcard;charset=utf-8;' });
-    const url = URL.createObjectURL(blob);
-    const link = document.createElement('a');
-    link.href = url;
-    link.setAttribute('download', 'Chiquexodo_Contato.vcf');
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-    URL.revokeObjectURL(url);
-    showToast('Contato pronto para salvar no seu celular!');
   };
 
   return (
@@ -77,15 +55,31 @@ END:VCARD`;
         {/* Action Links (WhatsApp in supreme prominence + Instagram) */}
         <ActionLinks />
 
-        {/* Quick Utility: Save Contact to Phonebook */}
+        {/* Boutique Styling & Size Assistance Card */}
         <div className="w-full mt-3">
-          <button
-            onClick={handleSaveContact}
-            className="w-full py-3.5 px-4 rounded-2xl border border-[#EAD5E1] bg-white/95 hover:bg-white text-xs font-bold text-gray-700 hover:text-[#E21885] shadow-sm shadow-[#964B74]/5 flex items-center justify-center gap-2 transition-all active:scale-[0.98] cursor-pointer"
+          <a
+            href="https://w.app/chiquexodo"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-full p-3.5 rounded-2xl border border-[#EAD5E1] bg-white/95 hover:bg-white shadow-sm shadow-[#964B74]/5 flex items-center justify-between gap-3 text-left transition-all duration-300 hover:border-[#E21885]/40 hover:-translate-y-0.5 group cursor-pointer"
           >
-            <BookmarkPlus className="w-4 h-4 text-[#E21885]" />
-            <span>Salvar contato da Chiquexodó no celular</span>
-          </button>
+            <div className="flex items-center gap-3">
+              <div className="w-9 h-9 rounded-xl bg-pink-50 text-[#E21885] flex items-center justify-center shrink-0 border border-pink-100 group-hover:scale-105 transition-transform">
+                <Sparkles className="w-4 h-4" />
+              </div>
+              <div>
+                <p className="text-xs font-bold text-gray-900 group-hover:text-[#E21885] transition-colors leading-tight">
+                  Consultoria de Tamanhos e Looks
+                </p>
+                <p className="text-[11px] text-gray-500 mt-0.5">
+                  Tire dúvidas e escolha o look ideal no WhatsApp
+                </p>
+              </div>
+            </div>
+            <div className="w-7 h-7 rounded-lg bg-pink-50 text-gray-400 group-hover:bg-[#E21885] group-hover:text-white flex items-center justify-center shrink-0 transition-colors">
+              <ChevronRight className="w-4 h-4" />
+            </div>
+          </a>
         </div>
 
         {/* Trust & Guarantee Badges (Envio Nacional, Atendimento, Estilo & Conforto) */}
